@@ -8,19 +8,19 @@ header("Content-Type: text/html;charset=UTF-8");
 
 if($_SERVER['HTTP_HOST']=="localhost" or $_SERVER['HTTP_HOST']=="192.168.1.125")
 {	
-	DEFINE ('DB_USER', 'db_uname');
-	DEFINE ('DB_PASSWORD', 'db_password');
-	DEFINE ('DB_HOST', 'db_hname'); //host name depends on server
-	DEFINE ('DB_NAME', 'db_name');
+	DEFINE ('DB_USER', 'pjsxduax_ADMIN');
+	DEFINE ('DB_PASSWORD', 'ADMIN9833137409');
+	DEFINE ('DB_HOST', 'localhost'); //host name depends on server
+	DEFINE ('DB_NAME', 'pjsxduax_christmas');
 }
 else
 {
 	//local live 
 
-	DEFINE ('DB_USER', 'db_uname');
-	DEFINE ('DB_PASSWORD', 'db_password');
-	DEFINE ('DB_HOST', 'db_hname'); //host name depends on server
-	DEFINE ('DB_NAME', 'db_name');
+	DEFINE ('DB_USER', 'pjsxduax_ADMIN');
+	DEFINE ('DB_PASSWORD', 'ADMIN9833137409');
+	DEFINE ('DB_HOST', 'localhost'); //host name depends on server
+	DEFINE ('DB_NAME', 'pjsxduax_christmas');
 }
 
 
