@@ -52,6 +52,36 @@ if($get_method['method_name']=="get_wallpaper_view")
 	die();
 
 }
+else if($get_method['method_name']=="get_new_year_wallpaper_view")
+{
+	
+	$jsonObj= array();
+
+	$query="SELECT * FROM tbl_new_year_wallpaper WHERE tbl_new_year_wallpaper.`status`= 1
+	ORDER BY tbl_new_year_wallpaper.`total_views` DESC";
+
+	$sql = mysqli_query($mysqli,$query)or die(mysqli_error($mysqli));
+
+	while($data = mysqli_fetch_assoc($sql))
+	{
+		$row['id'] = $data['id'];
+		$row['wall_name'] = $data['wall_name'];
+		$row['tags'] = $data['tags'];
+		$row['total_views'] = $data['total_views'];
+		$row['image_b'] = $file_path.'images/'.$data['image'];
+		$row['image_s'] = $file_path.'images/thumbs/'.$data['image'];
+		
+		array_push($jsonObj,$row);
+		
+	}
+	
+	$set['CHRISTMAS_APP'] = $jsonObj;
+	
+	header( 'Content-Type: application/json; charset=utf-8' );
+	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+	die();
+
+}
 else if($get_method['method_name']=="get_sms")
 {
 	
@@ -125,6 +155,32 @@ else if($get_method['method_name']=="get_wallpaper")
 	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 	die();
 }
+else if($get_method['method_name']=="get_new_year_wallpaper")
+{
+	$jsonObj= array();
+	
+	$query="SELECT * FROM tbl_new_year_wallpaper WHERE tbl_new_year_wallpaper.`status`= 1 ORDER BY tbl_new_year_wallpaper.`id` DESC";
+	$sql = mysqli_query($mysqli,$query)or die(mysqli_error($mysqli));
+
+	while($data = mysqli_fetch_assoc($sql))
+	{
+
+		$row['id'] = $data['id'];
+		$row['wall_name'] = $data['wall_name'];
+		$row['tags'] = $data['tags'];
+		$row['image_b'] = $file_path.'images/'.$data['image'];
+		$row['image_s'] = $file_path.'images/thumbs/'.$data['image'];
+		
+		array_push($jsonObj,$row);
+		
+	}
+
+	$set['CHRISTMAS_APP'] = $jsonObj;
+	
+	header( 'Content-Type: application/json; charset=utf-8' );
+	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+	die();
+}
 else if($get_method['method_name']=="get_single_wallpaper")
 {
 	$jsonObj= array();
@@ -148,6 +204,37 @@ else if($get_method['method_name']=="get_single_wallpaper")
 	}
 
 	$view_qry=mysqli_query($mysqli,"UPDATE tbl_wallpaper SET total_views = total_views + 1 WHERE id = '$wall_id'");
+
+	$set['CHRISTMAS_APP'] = $jsonObj;
+	
+	header( 'Content-Type: application/json; charset=utf-8' );
+	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+	die();
+	
+}
+else if($get_method['method_name']=="get_new_year_single_wallpaper")
+{
+	$jsonObj= array();
+
+	$wall_id=$get_method['wall_id'];
+	
+	$query="SELECT * FROM tbl_new_year_wallpaper WHERE tbl_new_year_wallpaper.`status`= 1 AND tbl_new_year_wallpaper.`id`='$wall_id'";
+	$sql = mysqli_query($mysqli,$query)or die(mysqli_error($mysqli));
+
+	while($data = mysqli_fetch_assoc($sql))
+	{
+		$row['id'] = $data['id'];
+		$row['wall_name'] = $data['wall_name'];
+		$row['tags'] = $data['tags'];
+		$row['total_views'] = $data['total_views'];
+		$row['image_b'] = $file_path.'images/'.$data['image'];
+		$row['image_s'] = $file_path.'images/thumbs/'.$data['image'];
+		
+		array_push($jsonObj,$row);
+		
+	}
+
+	$view_qry=mysqli_query($mysqli,"UPDATE tbl_new_year_wallpaper SET total_views = total_views + 1 WHERE id = '$wall_id'");
 
 	$set['CHRISTMAS_APP'] = $jsonObj;
 	

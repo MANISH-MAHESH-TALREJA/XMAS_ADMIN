@@ -63,6 +63,11 @@ $mysqli->set_charset("utf8mb4");
           <div class="title">Wallpaper</div>
         </a> 
       </li>
+      <li <?php if($currentFile=="manage_new_year_wallpaper.php" or $currentFile=="add_new_year_wallpaper.php" or $currentFile=="edit_new_year_wallpaper.php"){?>class="active"<?php }?>> <a href="manage_new_year_wallpaper.php">
+          <div class="icon"> <i class="fa fa-image" aria-hidden="true"></i> </div>
+          <div class="title">New Year Images</div>
+        </a> 
+      </li>
       <li <?php if($currentFile=="manage_ringtones.php" or $currentFile=="add_ringtone.php" or $currentFile=="edit_ringtone.php"){?>class="active"<?php }?>> <a href="manage_ringtones.php">
         <div class="icon"> <i class="fa fa-music" aria-hidden="true"></i> </div>
         <div class="title">Ringtone</div>

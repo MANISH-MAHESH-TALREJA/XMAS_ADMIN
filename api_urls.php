@@ -22,12 +22,15 @@ $file_path = getBaseUrl().'api.php';
 			 <pre>
 				<code class="html">
 				 <br><b>API URL</b>&nbsp; <?php echo $file_path;?>		  
-				 <br><b>Wallpaper Most Views</b>(Method: get_wallpaper_view)
-				 <br><b>Wallpaper</b>(Method: get_wallpaper)
+				 <br><b>Christmas Wallpaper Most Views</b>(Method: get_wallpaper_view)
+				 <br><b>Christmas Wallpaper</b>(Method: get_wallpaper)
+				 <br><b>New Year Wallpaper Most Views</b>(Method: get_new_year_wallpaper_view)
+				 <br><b>New Year Wallpaper</b>(Method: get_new_year_wallpaper)
 				 <br><b>Ringtone</b>(Method: get_ringtone)
 				 <br><b>Quiz</b>(Method: get_quiz)
 				 <br><b>Sms</b>(Method: get_sms)
-				 <br><b>Single Wallpaper</b>(Method: get_single_wallpaper)(Parameter: wall_id)
+				 <br><b>Single Christmas Wallpaper</b>(Method: get_single_wallpaper)(Parameter: wall_id)
+				 <br><b>Single New Year Wallpaper</b>(Method: get_new_year_single_wallpaper)(Parameter: wall_id)
 				 <br><b>Single Ringtone</b>(Method: get_single_ringtone)(Parameter: ring_id)
 				 <br><b>Single Quiz</b>(Method: get_single_quiz)(Parameter: quiz_id)
 				 <br><b>Single Sms</b>(Method: get_single_sms)(Parameter: sms_id)

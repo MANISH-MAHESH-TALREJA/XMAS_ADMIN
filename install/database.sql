@@ -212,6 +212,28 @@ INSERT INTO `tbl_wallpaper` (`id`, `user_id`, `image`, `wall_name`, `tags`, `sta
 (33, 1, '47513_18_2016.jpeg', 'Christmas Wallpaper', 'Christmas Wallpaper, Christmas Tree,Christmas', 1, 20),
 (34, 1, '76376_19_2016.jpg', 'Christmas Wallpaper', 'Christmas Wallpaper, Christmas Tree', 1, 24);
 
+
+CREATE TABLE `tbl_new_year_wallpaper` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `image` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
+  `wall_name` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+  `tags` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+  `status` int(1) NOT NULL DEFAULT 0,
+  `total_views` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tbl_wallpaper`
+--
+
+INSERT INTO `tbl_new_year_wallpaper` (`id`, `user_id`, `image`, `wall_name`, `tags`, `status`, `total_views`) VALUES
+(30, 1, '5740_15_2016.jpg', 'New Year Wallpaper', 'New Year Wallpaper, New Year Tree', 1, 19),
+(31, 1, '77452_16_2016.jpeg', 'New Year Wallpaper', 'New Year Wallpaper, New Year Tree', 1, 34),
+(32, 1, '91170_17_2016.jpeg', 'New Year Wallpaper', 'New Year Wallpaper, New Year Tree', 1, 30),
+(33, 1, '47513_18_2016.jpeg', 'New Year Wallpaper', 'New Year Wallpaper, New Year Tree, Christmas', 1, 20),
+(34, 1, '76376_19_2016.jpg', 'New Year Wallpaper', 'New Year Wallpaper, New Year Tree', 1, 24);
+
 --
 -- Indexes for dumped tables
 --
@@ -258,6 +280,8 @@ ALTER TABLE `tbl_sms`
 ALTER TABLE `tbl_wallpaper`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `tbl_new_year_wallpaper`
+  ADD PRIMARY KEY (`id`);
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -302,4 +326,7 @@ ALTER TABLE `tbl_sms`
 -- AUTO_INCREMENT for table `tbl_wallpaper`
 --
 ALTER TABLE `tbl_wallpaper`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+  ALTER TABLE `tbl_new_year_wallpaper`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
