@@ -87,6 +87,25 @@
 				mysqli_query($mysqli, $deleteSql);
 			}
 
+			if($table=='tbl_video'){
+
+				$sqlCategory="SELECT * FROM $table WHERE `id` IN ($ids)";
+				$res=mysqli_query($mysqli, $sqlCategory);
+				while ($row=mysqli_fetch_assoc($res)){
+					if ($row['video_thumbnail'] != "") {
+						unlink('images/' . $row['video_thumbnail']);
+					}
+			
+					if ($row['video_type'] == 'local') {
+						unlink('uploads/' . basename($row['video_url']));
+					}
+
+				}
+				$deleteSql="DELETE FROM $table WHERE `id` IN ($ids)";
+
+				mysqli_query($mysqli, $deleteSql);
+			}
+
 			else if($table=='tbl_ringtone'){
 
 				$sqlCategory="SELECT * FROM $table WHERE `id` IN ($ids)";

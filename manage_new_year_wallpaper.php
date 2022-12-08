@@ -79,9 +79,9 @@ else
 	            <button class="btn btn-primary dropdown-toggle btn_cust" type="button" data-toggle="dropdown">Action
 	            <span class="caret"></span></button>
 	             <ul class="dropdown-menu" style="right:0;left:auto;">
-                <li><a href="javascript:void(0)" class="actions" data-action="enable" data-table="tbl_wallpaper" data-column="status">Enable</a></li>
-                <li><a href="javascript:void(0)" class="actions" data-action="disable" data-table="tbl_wallpaper" data-column="status">Disable</a></li>
-                <li><a href="javascript:void(0)" class="actions" data-action="delete" data-table="tbl_wallpaper" data-column="status">Delete !</a></li>
+                <li><a href="javascript:void(0)" class="actions" data-action="enable" data-table="tbl_new_year_wallpaper" data-column="status">Enable</a></li>
+                <li><a href="javascript:void(0)" class="actions" data-action="disable" data-table="tbl_new_year_wallpaper" data-column="status">Disable</a></li>
+                <li><a href="javascript:void(0)" class="actions" data-action="delete" data-table="tbl_new_year_wallpaper" data-column="status">Delete !</a></li>
               </ul>
 	          </div>
 	        </div>
@@ -109,10 +109,10 @@ else
                     <ul>
                       <li><a href="javascript:void(0)" data-toggle="tooltip" data-tooltip="<?php echo $row['total_views'];?> Views"><i class="fa fa-eye"></i></a></li>
                       <li><a href="edit_new_year_wallpaper.php?wallpaper_id=<?php echo $row['id'];?>&redirect=<?=$redirectUrl?>" data-toggle="tooltip" data-tooltip="Edit"><i class="fa fa-edit"></i></a></li>
-                      <li><a href="javascript:void(0)" class="btn_delete" data-id="<?php echo $row['id'];?>" data-table="tbl_wallpaper" data-toggle="tooltip" data-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
+                      <li><a href="javascript:void(0)" class="btn_delete" data-id="<?php echo $row['id'];?>" data-table="tbl_new_year_wallpaper" data-toggle="tooltip" data-tooltip="Delete"><i class="fa fa-trash"></i></a></li>
                      <li>
                         <div class="row toggle_btn">
-                          <input type="checkbox" id="enable_disable_check_<?=$i?>" data-id="<?=$row['id']?>" data-table="tbl_wallpaper" data-column="status" class="cbx hidden enable_disable" <?php if($row['status']==1){ echo 'checked';} ?>>
+                          <input type="checkbox" id="enable_disable_check_<?=$i?>" data-id="<?=$row['id']?>" data-table="tbl_new_year_wallpaper" data-column="status" class="cbx hidden enable_disable" <?php if($row['status']==1){ echo 'checked';} ?>>
                           <label for="enable_disable_check_<?=$i?>" class="lbl"></label>
                         </div>
                       </li>  

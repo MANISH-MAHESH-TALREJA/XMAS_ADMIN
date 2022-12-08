@@ -68,6 +68,11 @@ $mysqli->set_charset("utf8mb4");
           <div class="title">New Year Images</div>
         </a> 
       </li>
+      <li <?php if($currentFile=="manage_videos.php" or $currentFile=="add_video.php" or $currentFile=="edit_video.php"){?>class="active"<?php }?>> <a href="manage_videos.php">
+          <div class="icon"> <i class="fa fa-image" aria-hidden="true"></i> </div>
+          <div class="title">XMAS Videos</div>
+        </a> 
+      </li>
       <li <?php if($currentFile=="manage_ringtones.php" or $currentFile=="add_ringtone.php" or $currentFile=="edit_ringtone.php"){?>class="active"<?php }?>> <a href="manage_ringtones.php">
         <div class="icon"> <i class="fa fa-music" aria-hidden="true"></i> </div>
         <div class="title">Ringtone</div>
