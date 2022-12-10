@@ -148,6 +148,7 @@ $mysqli->set_charset("utf8mb4");
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
+        <a href="https://play.google.com/store/apps/developer?id=MANISH+MAHESH+TALREJA" target="_blank" style="font-size:14px;color:#FFF;border:1px solid rgba(255, 255, 255, 0.7);padding: 8px 12px;border-radius:2px;margin-right:20px;"><i class="fa fa-android" style="padding-right:6px;"></i> View Mobile Apps</a>
           <li class="dropdown profile"> <a href="profile.php" class="dropdown-toggle" data-toggle="dropdown"> <?php if(PROFILE_IMG){?>               
             <img class="profile-img" src="images/<?php echo PROFILE_IMG;?>">
           <?php }else{?>

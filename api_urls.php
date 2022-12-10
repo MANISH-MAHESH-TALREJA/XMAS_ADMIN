@@ -16,7 +16,7 @@ $file_path = getBaseUrl().'api.php';
         ?>
 		<div class="card">
 			<div class="card-header">
-			  Example API urls
+			  Android Application API URL'S
 			</div>
 			<div class="card-body no-padding">		
 			 <pre>

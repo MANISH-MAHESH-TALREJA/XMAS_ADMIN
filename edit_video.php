@@ -32,6 +32,14 @@ if(isset($_POST['submit']))
       unlink('uploads/'.basename($row['video_url']));
     }
   } 
+  if($_POST['video_type']=='youtube')
+  {
+    $video_url=addslashes(trim($_POST['video_url']));  
+
+    if($row['video_type']=='local'){
+      unlink('uploads/'.basename($row['video_url']));
+    }
+  } 
   else if ($_POST['video_type']=='local')
   {
     if (!empty($_FILES['video_local']['name'])) {
@@ -175,6 +183,7 @@ if(isset($_POST['submit']))
                   <div class="col-md-6">                       
                     <select name="video_type" id="video_type" style="width:280px; height:25px;" class="select2" required>
                       <option value="server_url" <?php if($row['video_type']=='server_url'){?>selected<?php }?>>Server URL</option>
+                      <option value="youtube" <?php if($row['video_type']=='youtube'){?>selected<?php }?>>YouTube</option>
                       <option value="local" <?php if($row['video_type']=='local'){?>selected<?php }?>>Browse From Computer</option>
                     </select>
                   </div>
@@ -309,6 +318,14 @@ if(isset($_POST['submit']))
           var type=$("#video_type").val();
 
           if(type=="server_url")
+          {
+            $("#video_url_display").show();
+            $("#video_url_display").find("input").attr("required",true);
+            $("#video_local_display").find("input").attr("required",false);
+            $("#thumbnail").show();
+            $("#video_local_display").hide();
+          }
+          if(type=="youtube")
           {
             $("#video_url_display").show();
             $("#video_url_display").find("input").attr("required",true);

@@ -18,6 +18,10 @@ if(isset($_POST['submit']))
   {
     $video_url=addslashes(trim($_POST['video_url']));
   }
+  if ($_POST['video_type']=='youtube')
+  {
+    $video_url=addslashes(trim($_POST['video_url']));     
+  }      
   else if ($_POST['video_type']=='local')
   {
     $path = "uploads/";
@@ -144,6 +148,7 @@ if(isset($_POST['submit']))
                 <div class="col-md-6">                       
                   <select name="video_type" id="video_type" class="select2" required>  
                     <option value="server_url">Server URL</option>
+                    <option value="youtube">YouTube</option> 
                     <option value="local">Browse From Computer</option>
                   </select>
                 </div>
@@ -271,6 +276,14 @@ if(isset($_POST['submit']))
       var type=$("#video_type").val();
 
       if(type=="server_url")
+      {
+        $("#video_url_display").show();
+        $("#video_url_display").find("input").attr("required",true);
+        $("#video_local_display").find("input").attr("required",false);
+        $("#thumbnail").show();
+        $("#video_local_display").hide();
+      }
+      else if(type=="youtube")
       {
         $("#video_url_display").show();
         $("#video_url_display").find("input").attr("required",true);

@@ -120,7 +120,13 @@ else
                     <li><a href="javascript:void(0)" data-toggle="tooltip" data-tooltip="Landscape"><i class="fa fa-mobile" style="transform:rotate(90deg);"></i></a></li>
                   <?php }?>  
 
-                  <li><a href="" class="btn_preview" data-title="<?=$row['video_title']?>" data-url="<?=$video_file?>" data-toggle="tooltip" data-tooltip="Video Preview"><i class="fa fa-video-camera"></i></a></li>
+                  <?php if($row['video_type']=='youtube'){?>
+                    <li><a href="<?=$video_file?>" data-toggle="tooltip" data-tooltip="Edit" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+                  <?php }else{?>
+                    <li><a href="" class="btn_preview" data-title="<?=$row['video_title']?>" data-url="<?=$video_file?>" data-toggle="tooltip" data-tooltip="Video Preview"><i class="fa fa-video-camera"></i></a></li>
+                  <?php }?> 
+
+                  
 
                   
                       <li><a href="javascript:void(0)" data-toggle="tooltip" data-tooltip="<?php echo $row['total_viewer'];?> Views"><i class="fa fa-eye"></i></a></li>
