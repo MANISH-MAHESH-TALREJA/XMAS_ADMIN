@@ -40,6 +40,14 @@
 	  $client_lang['19']="Login successfully...";
 
 	  $client_lang['test_email_sent'] = "SMTP test email is sent successfully..."; 
+
+	  $client_lang['24'] = "Set on home screen successfully...";  
+
+	  $client_lang['25'] = "Removed from home screen successfully...";  
+
+	  $client_lang['26'] = "Set on slider successfully...";  
+
+	  $client_lang['27'] = "Removed from slider successfully...";  
   
 	    
 ?>

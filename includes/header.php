@@ -59,8 +59,8 @@ $mysqli->set_charset("utf8mb4");
           </a> 
         </li>
         <li <?php if($currentFile=="manage_wallpaper.php" or $currentFile=="add_wallpaper.php" or $currentFile=="edit_wallpaper.php"){?>class="active"<?php }?>> <a href="manage_wallpaper.php">
-          <div class="icon"> <i class="fa fa-image" aria-hidden="true"></i> </div>
-          <div class="title">Wallpaper</div>
+          <div class="icon"> <i class="fa fa-tree" aria-hidden="true"></i> </div>
+          <div class="title">XMAS Images</div>
         </a> 
       </li>
       <li <?php if($currentFile=="manage_new_year_wallpaper.php" or $currentFile=="add_new_year_wallpaper.php" or $currentFile=="edit_new_year_wallpaper.php"){?>class="active"<?php }?>> <a href="manage_new_year_wallpaper.php">
@@ -69,18 +69,23 @@ $mysqli->set_charset("utf8mb4");
         </a> 
       </li>
       <li <?php if($currentFile=="manage_videos.php" or $currentFile=="add_video.php" or $currentFile=="edit_video.php"){?>class="active"<?php }?>> <a href="manage_videos.php">
-          <div class="icon"> <i class="fa fa-image" aria-hidden="true"></i> </div>
-          <div class="title">XMAS Videos</div>
+          <div class="icon"> <i class="fa fa-film" aria-hidden="true"></i> </div>
+          <div class="title">Video Status</div>
         </a> 
       </li>
       <li <?php if($currentFile=="manage_ringtones.php" or $currentFile=="add_ringtone.php" or $currentFile=="edit_ringtone.php"){?>class="active"<?php }?>> <a href="manage_ringtones.php">
         <div class="icon"> <i class="fa fa-music" aria-hidden="true"></i> </div>
-        <div class="title">Ringtone</div>
+        <div class="title">Ringtones</div>
       </a> 
     </li> 
     <li <?php if($currentFile=="manage_sms.php" or $currentFile=="add_sms.php" or $currentFile=="edit_sms.php"){?>class="active"<?php }?>> <a href="manage_sms.php">
+      <div class="icon"> <i class="fa fa-quote-right" aria-hidden="true"></i> </div>
+      <div class="title">Wishes</div>
+    </a> 
+  </li>
+  <li <?php if($currentFile=="manage_stories.php" or $currentFile=="add_story.php" or $currentFile=="edit_story.php"){?>class="active"<?php }?>> <a href="manage_stories.php">
       <div class="icon"> <i class="fa fa-book" aria-hidden="true"></i> </div>
-      <div class="title">Sms</div>
+      <div class="title">Stories</div>
     </a> 
   </li>
 

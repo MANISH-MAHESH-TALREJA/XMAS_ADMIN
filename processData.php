@@ -8,6 +8,26 @@
 	$_SESSION['class']="success";
 
 	switch ($_POST['action']) {
+		case 'multi_toggle_status':
+			$id=$_POST['id'];
+			$for_action=$_POST['for_action'];
+			$column=$_POST['column'];
+			$tbl_id=$_POST['tbl_id'];
+			$table_nm=$_POST['table'];
+
+			if($for_action=='active'){
+				$data = array($column  =>  '1');
+			    $edit_status=Update($table_nm, $data, "WHERE $tbl_id = '$id'");
+			}else{
+				$data = array($column  =>  '0');
+			    $edit_status=Update($table_nm, $data, "WHERE $tbl_id = '$id'");
+			}
+			
+	      	$response['status']=1;
+	      	$response['action']=$for_action;
+	      	echo json_encode($response);
+			break;
+
 		case 'toggle_status':
 			$table_nm = $_POST['table'];
 			
@@ -38,6 +58,38 @@
 			echo json_encode($response);
 			break;
 
+		case 'multi_delete':
+
+			$ids=implode(",", $_POST['id']);
+	
+			if($ids==''){
+				$ids=$_POST['id'];
+			}
+	
+			$tbl_nm=$_POST['tbl_nm'];
+			if($tbl_nm=='tbl_stories'){
+
+				$sql="SELECT * FROM $tbl_nm WHERE `id` IN ($ids)";
+				$res=mysqli_query($mysqli, $sql);
+				while ($row=mysqli_fetch_assoc($res)){
+					if($row['story_image']!="")
+					{
+						unlink('images/'.$row['story_image']);
+						unlink('images/thumbs/'.$row['story_image']);
+					}
+
+				}
+				$deleteSql="DELETE FROM $tbl_nm WHERE `id` IN ($ids)";
+
+				mysqli_query($mysqli, $deleteSql);
+
+			}
+
+			$_SESSION['msg']="12";
+			
+	      	$response['status']=1;
+	      	echo json_encode($response);
+			break;
 		case 'multi_action':
 
 			$action=$_POST['for_action'];
@@ -126,6 +178,19 @@
 				$deleteSql="DELETE FROM $table WHERE `id` IN ($ids)";
 				
 				mysqli_query($mysqli, $deleteSql);
+			}else if($table=='tbl_slider'){
+
+				$sql=mysqli_query($mysqli,"SELECT * FROM tbl_slider WHERE `id` IN ($ids)");
+				$row=mysqli_fetch_assoc($sql);
+
+				if($row['slider_type']=="external")
+				{
+					unlink('images/'.$row['external_image']);
+				}
+
+				$deleteSql="DELETE FROM tbl_slider WHERE `id` IN ($ids)";
+				mysqli_query($mysqli, $deleteSql);
+
 			}
 
 			else if($table=='tbl_quiz'){

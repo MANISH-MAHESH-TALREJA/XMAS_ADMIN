@@ -1,4 +1,4 @@
-<?php $page_title="Edit Sms";
+<?php $page_title="Edit Wishes";
 
 include("includes/header.php");
 
@@ -53,7 +53,7 @@ if(isset($_POST['submit']))
         <div class="section">
           <div class="section-body">
            <div class="form-group">
-            <label class="col-md-2 control-label">Sms Text:-</label>
+            <label class="col-md-2 control-label">Wishes Text :-</label>
             <div class="col-md-6">
               <textarea type="text" class="form-control typeahead" name="sms" id="sms" value="" style="height:200px;" rows="5" cols="50"><?php echo stripslashes($row['sms']);?></textarea>
             </div>

@@ -1,4 +1,4 @@
-<?php $page_title="Manage SMS";
+<?php $page_title="Manage Wishes";
 
 include("includes/header.php");
 
@@ -65,11 +65,11 @@ else
        <div class="search_list">
         <div class="search_block">
          <form  method="post" action="" enctype="multipart/form-data">
-          <input class="form-control input-sm" placeholder="Search by sms..." aria-controls="DataTables_Table_0" type="search" name="search_text" required>
+          <input class="form-control input-sm" placeholder="Search Wishes..." aria-controls="DataTables_Table_0" type="search" name="search_text" required>
           <button type="submit" name="data_search" class="btn-search"><i class="fa fa-search"></i></button>
         </form>                     
       </div>
-      <div class="add_btn_primary"> <a href="add_sms.php">Add sms</a> </div>
+      <div class="add_btn_primary"> <a href="add_sms.php">Add Wishes</a> </div>
     </div>
   </div>
   <div class="col-md-4 col-xs-12 text-right" style="float: right;">
@@ -96,7 +96,7 @@ else
     <thead>
       <tr>
         <th>#</th>
-        <th>SMS</th>
+        <th>Wishes</th>
         <th>status</th>
         <th class="cat_action_list">Action</th>
       </tr>

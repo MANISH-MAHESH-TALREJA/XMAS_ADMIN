@@ -1,4 +1,4 @@
-<?php $page_title="Add Sms";
+<?php $page_title="Add Wishes";
 
 include("includes/header.php");
 
@@ -43,7 +43,7 @@ if(isset($_POST['submit']))
           <div class="section">
             <div class="section-body">
               <div class="form-group">
-                <label class="col-md-2 control-label">Sms Text :-</label>
+                <label class="col-md-2 control-label">Wishes Text :-</label>
                 <div class="col-md-6">
                   <textarea type="text" class="form-control typeahead"  name="sms" id="sms" value="" style="height:150px;" rows="5"></textarea>
                 </div>
