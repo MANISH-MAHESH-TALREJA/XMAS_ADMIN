@@ -88,6 +88,11 @@ $mysqli->set_charset("utf8mb4");
       <div class="title">Stories</div>
     </a> 
   </li>
+  <li <?php if($currentFile=="manage_slider.php" or $currentFile=="add_slider.php" or $currentFile=="edit_slider.php"){?>class="active"<?php }?>> <a href="manage_slider.php">
+    <div class="icon"> <i class="fa fa-sliders" aria-hidden="true"></i> </div>
+    <div class="title">Home Sliders</div>
+  </a> 
+</li>
 
   <li <?php if($currentFile=="manage_quiz.php" or $currentFile=="add_quiz.php" or $currentFile=="edit_quiz.php"){?>class="active"<?php }?>> <a href="manage_quiz.php">
     <div class="icon"> <i class="fa fa-question" aria-hidden="true"></i> </div>

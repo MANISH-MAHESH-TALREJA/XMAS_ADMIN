@@ -10,6 +10,12 @@ define("PACKAGE_NAME",$settings_details['package_name']);
 
 date_default_timezone_set("Asia/Kolkata");
 
+function get_thumb($filename, $thumb_size)
+{
+	global $file_path;
+	return $thumb_path = $file_path . 'thumb.php?src=' . $filename . '&size=' . $thumb_size;
+}
+
 
 if($settings_details['envato_buyer_name']=='' OR $settings_details['envato_purchase_code']=='' OR $settings_details['envato_purchased_status']==0) {  
 
@@ -19,6 +25,8 @@ if($settings_details['envato_buyer_name']=='' OR $settings_details['envato_purch
 	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 	die();
 }
+
+
 
 $get_method = checkSignSalt($_POST['data']);	
 
@@ -105,6 +113,60 @@ else if($get_method['method_name']=="get_sms")
 	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 	die();
 }
+else if($get_method['method_name']=="get_videos")
+{
+	
+	$jsonObj= array();
+
+	$query="SELECT * FROM tbl_video WHERE tbl_video.`status`= 1 ORDER BY tbl_video.`id` DESC";
+	$sql = mysqli_query($mysqli,$query)or die(mysqli_error($mysqli));
+
+	while($data = mysqli_fetch_assoc($sql))
+	{
+		$row['id'] = $data['id'];
+		$row['video_type'] = stripslashes($data['video_type']);
+		$row['video_title'] = $data['video_title'];
+		$row['video_url'] = $data['video_url'];
+		$row['video_id'] = $data['video_id'];
+		$row['video_image'] = $file_path.'images/'.$data['video_thumbnail'];
+		array_push($jsonObj,$row);
+		
+	}
+
+	$set['CHRISTMAS_APP'] = $jsonObj;
+	
+	header( 'Content-Type: application/json; charset=utf-8' );
+	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+	die();
+}
+
+else if($get_method['method_name']=="get_single_video")
+{
+	$jsonObj= array();
+	$video_id=$get_method['video_id'];
+
+	$query="SELECT * FROM tbl_video WHERE tbl_video.`status`=1 AND tbl_video.`id`='$video_id'";
+	$sql = mysqli_query($mysqli,$query)or die(mysqli_error($mysqli));
+
+	while($data = mysqli_fetch_assoc($sql))
+	{
+		$row['id'] = $data['id'];
+		$row['video_type'] = stripslashes($data['video_type']);
+		$row['video_title'] = $data['video_title'];
+		$row['video_url'] = $data['video_url'];
+		$row['video_id'] = $data['video_id'];
+		$row['video_image'] = $file_path.'images/'.$data['video_thumbnail'];
+		array_push($jsonObj,$row);
+	}
+
+	$set['CHRISTMAS_APP'] = $jsonObj;
+	
+	header( 'Content-Type: application/json; charset=utf-8' );
+	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+	die();
+	
+}
+
 else if($get_method['method_name']=="get_single_sms")
 {
 	$jsonObj= array();
@@ -121,6 +183,8 @@ else if($get_method['method_name']=="get_single_sms")
 		array_push($jsonObj,$row);
 		
 	}
+
+	$view_qry=mysqli_query($mysqli,"UPDATE tbl_sms SET total_views = total_views + 1 WHERE id = '$sms_id'");
 
 	$set['CHRISTMAS_APP'] = $jsonObj;
 	
@@ -181,6 +245,40 @@ else if($get_method['method_name']=="get_new_year_wallpaper")
 	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 	die();
 }
+
+else if($get_method['method_name']=="get_stories")
+	{
+
+
+		$jsonObj= array();	
+ 
+		$query="SELECT * FROM tbl_stories
+				WHERE tbl_stories.`status`='1' ORDER BY tbl_stories.`id` DESC";
+
+		$sql = mysqli_query($mysqli,$query)or die(mysqli_error());
+
+		while($data = mysqli_fetch_assoc($sql))
+		{
+			$row['id'] = $data['id'];
+ 			$row['story_title'] = stripslashes($data['story_title']);
+ 			$row['story_image'] = $file_path.'images/'.$data['story_image'];
+			$row['story_image_thumb'] = $file_path.'images/thumbs/'.$data['story_image'];
+ 			 
+ 			$row['story_description'] = stripslashes($data['story_description']);
+ 			$row['story_date'] = date('m/d/Y',$data['story_date']);
+ 			$row['story_views'] = $data['story_views'];
+			array_push($jsonObj,$row);
+		
+		}
+
+		$set['CHRISTMAS_APP'] = $jsonObj;
+		
+		header( 'Content-Type: application/json; charset=utf-8' );
+	    echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+		die();
+
+	}
+
 else if($get_method['method_name']=="get_single_wallpaper")
 {
 	$jsonObj= array();
@@ -212,6 +310,74 @@ else if($get_method['method_name']=="get_single_wallpaper")
 	die();
 	
 }
+
+else if($get_method['method_name']=="get_single_story")
+	{
+		  
+		$jsonObj= array();	
+		 
+		$query="SELECT * FROM tbl_stories
+				WHERE tbl_stories.`status`='1' AND tbl_stories.`id`='".$get_method['story_id']."'";
+
+		$sql = mysqli_query($mysqli,$query)or die(mysqli_error());
+
+		while($data = mysqli_fetch_assoc($sql))
+		{
+			$row['id'] = $data['id'];
+ 			$row['story_title'] = stripslashes($data['story_title']);
+ 			$row['story_image'] = $file_path.'images/'.$data['story_image'];
+			$row['story_image_thumb'] = $file_path.'images/thumbs/'.$data['story_image'];
+ 			$row['story_description'] = stripslashes($data['story_description']);
+ 			$row['story_date'] = date('m/d/Y',$data['story_date']);
+ 			$row['story_views'] = $data['story_views'];
+			array_push($jsonObj,$row);
+		
+		}
+
+		$view_qry=mysqli_query($mysqli,"update tbl_stories set story_views=story_views+1 where id='".$get_method['story_id']."'");
+
+ 
+
+		$set['CHRISTMAS_APP'] = $jsonObj;
+		
+		header( 'Content-Type: application/json; charset=utf-8' );
+	    echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+		die();	
+ 
+
+	}	  	 
+
+else if($get_method['method_name']=="get_stories")
+{
+
+	$jsonObj= array();	
+
+	$query="SELECT * FROM tbl_stories
+			WHERE tbl_stories.`status`='1' ORDER BY tbl_stories.`id` DESC";
+
+	$sql = mysqli_query($mysqli,$query)or die(mysqli_error());
+
+	while($data = mysqli_fetch_assoc($sql))
+	{
+		$row['id'] = $data['id'];
+		$row['story_title'] = stripslashes($data['story_title']);
+		$row['story_image'] = $file_path.'images/'.$data['story_image'];
+		$row['story_image_thumb'] = $file_path.'images/thumbs/'.$data['story_image'];
+		$row['story_description'] = stripslashes($data['story_description']);
+		$row['story_date'] = date('m/d/Y',$data['story_date']);
+		$row['story_views'] = $data['story_views'];
+		array_push($jsonObj,$row);
+	
+	}
+
+	$set['CHRISTMAS_APP'] = $jsonObj;
+	
+	header( 'Content-Type: application/json; charset=utf-8' );
+	echo $val= str_replace('\\/', '/', json_encode($set,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+	die();
+
+}
+
 else if($get_method['method_name']=="get_new_year_single_wallpaper")
 {
 	$jsonObj= array();

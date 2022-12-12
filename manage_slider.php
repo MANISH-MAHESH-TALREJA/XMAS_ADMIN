@@ -162,7 +162,13 @@
                   <li>                
                       <a href="javascript:void(0)" class="btn_delete" data-table="tbl_slider" data-id="<?php echo $row['id'];?>"  data-toggle="tooltip" data-tooltip="Delete"><i class="fa fa-trash"></i></a>                  
                   </li>
-
+                  <?php 
+                  if($row['slider_type']=='external'){
+                        ?>
+                        <li><a href="<?=$row['external_url']?>" target="_blank" data-toggle="tooltip" data-tooltip="URL"><i class="fa fa-link"></i></a></li>
+                        <?php
+                      }
+                      ?>
                   <li><a href="edit_slider.php?edit_id=<?php echo $row['id'];?>" data-toggle="tooltip" data-tooltip="Edit"><i class="fa fa-edit"></i></a></li>        
                  
                   <li>
